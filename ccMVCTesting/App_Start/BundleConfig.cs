@@ -23,12 +23,13 @@ namespace ccMVCTesting
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/respond.js"));
 
+            ////bundles.Add(new StyleBundle("~/Content/css").Include(
+            ////          "~/Content/bootstrap/bootstrap.css",
+            ////          "~/Content/site.css"));
             //bundles.Add(new StyleBundle("~/Content/css").Include(
-            //          "~/Content/bootstrap/bootstrap.css",
+            //          "~/Content/bootstrap/themes/united/bootstrap-theme.css",
             //          "~/Content/site.css"));
-            bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap/themes/united/bootstrap-theme.css",
-                      "~/Content/site.css"));
+            bundles.Add(new StyleBundle("~/Content/css").Include("~/Content/site.css"));
         }
     }
 }

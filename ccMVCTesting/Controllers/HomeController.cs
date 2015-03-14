@@ -26,5 +26,29 @@ namespace ccMVCTesting.Controllers
 
             return View();
         }
+
+        //
+        public ActionResult SelectTheme(string ThemeName = "")
+        {
+            List<string> Themes = new List<string>();
+            Themes.Add("cosmo");
+            Themes.Add("darkly");
+            Themes.Add("flatly");
+            Themes.Add("sandstone");
+            Themes.Add("superhero");
+            Themes.Add("united");
+            Themes.Add("yeti");
+            //
+            Session["ThemeName"] = "";
+            if (! String.IsNullOrEmpty(ThemeName))
+            {
+                if(Themes.Contains(ThemeName.ToLower()))
+                    Session["ThemeName"] = ThemeName;
+            } // !
+            //
+            return View("Index");
+            //
+        } // SelectTheme
+
     }
 }

@@ -3,7 +3,28 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>@ViewBag.Title - ccMVCTesting</title>
+    @{
+        string ThemePath = "";
+        if (null != Session)
+        {
+            if (!String.IsNullOrEmpty((string)Session["ThemeName"]))
+            {
+                ThemePath = "themes/" + (string)Session["ThemeName"] + "/bootstrap-theme.min.css"; // themed css
+                //
+            } // ThemeName
+            //
+        } // Session
+        //
+        if (String.IsNullOrEmpty(ThemePath))
+        {
+            ThemePath = "bootstrap.min.css"; // standard css
+        }
+        ThemePath = "/Content/bootstrap/" + ThemePath;
+    //
+    }
+    <link rel="stylesheet" href="@ThemePath">
+
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
@@ -24,6 +45,18 @@
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">Theme <span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li>@Html.ActionLink("Cosmo", "SelectTheme", new { ThemeName = "cosmo" })</li>
+                            <li>@Html.ActionLink("Darkly", "SelectTheme", new { ThemeName = "darkly" })</li>
+                            <li>@Html.ActionLink("Flatly", "SelectTheme", new { ThemeName = "flatly" })</li>
+                            <li>@Html.ActionLink("Sandstone", "SelectTheme", new { ThemeName = "sandstone" })</li>
+                            <li>@Html.ActionLink("Superhero", "SelectTheme", new { ThemeName = "superhero" })</li>
+                            <li>@Html.ActionLink("United", "SelectTheme", new { ThemeName = "united" })</li>
+                            <li>@Html.ActionLink("Yeti", "SelectTheme", new {ThemeName = "yeti"})</li>
+                        </ul>
+                    </li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
