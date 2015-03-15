@@ -32,8 +32,10 @@ namespace ccMVCTesting.Controllers
         {
             List<string> Themes = new List<string>();
             Themes.Add("cosmo");
+            Themes.Add("cyborg");
             Themes.Add("darkly");
             Themes.Add("flatly");
+            Themes.Add("paper");
             Themes.Add("sandstone");
             Themes.Add("superhero");
             Themes.Add("united");
