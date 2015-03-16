@@ -38,6 +38,7 @@ namespace ccMVCTesting.Controllers
             Themes.Add("flatly");
             Themes.Add("journal");
             Themes.Add("lumen");
+            Themes.Add("paper");
             Themes.Add("readable");
             Themes.Add("sandstone");
             Themes.Add("simplex");
