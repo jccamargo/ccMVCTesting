@@ -31,13 +31,18 @@ namespace ccMVCTesting.Controllers
         public ActionResult SelectTheme(string ThemeName = "")
         {
             List<string> Themes = new List<string>();
+            Themes.Add("cerulean");
             Themes.Add("cosmo");
             Themes.Add("cyborg");
             Themes.Add("darkly");
             Themes.Add("flatly");
-            Themes.Add("paper");
+            Themes.Add("journal");
+            Themes.Add("lumen");
+            Themes.Add("readable");
             Themes.Add("sandstone");
+            Themes.Add("simplex");
             Themes.Add("superhero");
+            Themes.Add("spacelab");
             Themes.Add("united");
             Themes.Add("yeti");
             //
