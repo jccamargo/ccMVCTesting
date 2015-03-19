@@ -41,31 +41,7 @@
                 @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">Theme <span class="caret"></span></a>
-                        <ul class="dropdown-menu" role="menu">
-                            <li>@Html.ActionLink("Cerulean", "SelectTheme", new { ThemeName = "cerulean" })</li>
-                            <li>@Html.ActionLink("Cosmo", "SelectTheme", new { ThemeName = "cosmo" })</li>
-                            <li>@Html.ActionLink("Cyborg", "SelectTheme", new { ThemeName = "cyborg" })</li>
-                            <li>@Html.ActionLink("Darkly", "SelectTheme", new { ThemeName = "darkly" })</li>
-                            <li>@Html.ActionLink("Flatly", "SelectTheme", new { ThemeName = "flatly" })</li>
-                            <li>@Html.ActionLink("Journal", "SelectTheme", new { ThemeName = "journal" })</li>
-                            <li>@Html.ActionLink("Lumen", "SelectTheme", new { ThemeName = "lumen" })</li>
-                            <li>@Html.ActionLink("Paper", "SelectTheme", new { ThemeName = "paper" })</li>
-                            <li>@Html.ActionLink("Readable", "SelectTheme", new { ThemeName = "readable" })</li>
-                            <li>@Html.ActionLink("Sandstone", "SelectTheme", new { ThemeName = "sandstone" })</li>
-                            <li>@Html.ActionLink("Simplex", "SelectTheme", new { ThemeName = "simplex" })</li>
-                            <li>@Html.ActionLink("Spacelab", "SelectTheme", new { ThemeName = "spacelab" })</li>
-                            <li>@Html.ActionLink("Superhero", "SelectTheme", new { ThemeName = "superhero" })</li>
-                            <li>@Html.ActionLink("United", "SelectTheme", new { ThemeName = "united" })</li>
-                            <li>@Html.ActionLink("Yeti", "SelectTheme", new {ThemeName = "yeti"})</li>
-                        </ul>
-                    </li>
-                </ul>
+                @Html.Partial("_MainMenu")
                 @Html.Partial("_LoginPartial")
             </div>
         </div>
