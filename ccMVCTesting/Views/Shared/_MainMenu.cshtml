@@ -19,7 +19,13 @@
                             <li>@Html.ActionLink("Spacelab", "SelectTheme", new { ThemeName = "spacelab" })</li>
                             <li>@Html.ActionLink("Superhero", "SelectTheme", new { ThemeName = "superhero" })</li>
                             <li>@Html.ActionLink("United", "SelectTheme", new { ThemeName = "united" })</li>
-                            <li>@Html.ActionLink("Yeti", "SelectTheme", new {ThemeName = "yeti"})</li>
+                            <li>@Html.ActionLink("Yeti", "SelectTheme", new { ThemeName = "yeti" })</li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">Catalogs <span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li>@Html.ActionLink("Users", "Index", "Users" )</li>
                         </ul>
                     </li>
                 </ul>

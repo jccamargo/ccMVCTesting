@@ -82,8 +82,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\UsersControllerTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Controllers\HomeControllerTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App.config" />
@@ -92,6 +92,14 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ccMVCTesting.Model\ccMVCTesting.Model.csproj">
+      <Project>{5be8fed7-d664-475f-9c35-e3dd981a48c4}</Project>
+      <Name>ccMVCTesting.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ccMVCTesting.Repository\ccMVCTesting.Repository.csproj">
+      <Project>{29269113-ad93-4f2e-9b88-ca8017fe68f3}</Project>
+      <Name>ccMVCTesting.Repository</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ccMVCTesting\ccMVCTesting.csproj">
       <Project>{AB328A0B-A4C2-4491-86C1-25CBCFD7A38E}</Project>
       <Name>ccMVCTesting</Name>

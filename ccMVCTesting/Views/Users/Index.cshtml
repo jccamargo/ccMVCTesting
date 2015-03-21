@@ -1,0 +1,71 @@
+﻿@model IEnumerable<ccMVCTesting.Model.User>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.OriginalEMail)<br/>
+            @Html.DisplayNameFor(model => model.CurrentEMail)
+        </th>
+        <th class="col-md-3">
+            - @Html.DisplayNameFor(model => model.Created)<br />
+            - @Html.DisplayNameFor(model => model.Confirmed)<br />
+            - @Html.DisplayNameFor(model => model.LastUpdated)<br />
+            - @Html.DisplayNameFor(model => model.LastLogin)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Active)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FailedAttempts)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DefaultCurrencyID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AuthUserID)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.OriginalEMail)<br />
+            @Html.DisplayFor(modelItem => item.CurrentEMail)
+        </td>
+        <td>
+            - @Html.DisplayFor(modelItem => item.Created)<br />
+            - @Html.DisplayFor(modelItem => item.Confirmed)<br />
+            - @Html.DisplayFor(modelItem => item.LastUpdated)<br />
+            - @Html.DisplayFor(modelItem => item.LastLogin)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Active)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FailedAttempts)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DefaultCurrencyID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AuthUserID)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.UserID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.UserID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.UserID })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,182 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="ccMVCTesting.Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Categories">
+          <Key>
+            <PropertyRef Name="CategoryID" />
+          </Key>
+          <Property Name="CategoryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CategoryName" Type="nvarchar" MaxLength="64" Nullable="false" />
+          <Property Name="ParentCategoryID" Type="int" />
+          <Property Name="CategoryColor" Type="int" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="ParentCategoryName" Type="nvarchar" MaxLength="64" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OriginalEMail" Type="nvarchar" MaxLength="384" Nullable="false" />
+          <Property Name="CurrentEMail" Type="nvarchar" MaxLength="384" Nullable="false" />
+          <Property Name="Created" Type="datetimeoffset" Precision="7" Nullable="false" />
+          <Property Name="Confirmed" Type="datetimeoffset" Precision="7" />
+          <Property Name="LastUpdated" Type="datetimeoffset" Precision="7" Nullable="false" />
+          <Property Name="LastLogin" Type="datetimeoffset" Precision="7" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+          <Property Name="OriginalPwd" Type="nvarchar" MaxLength="1024" Nullable="false" />
+          <Property Name="CurrentPwd" Type="nvarchar" MaxLength="1024" Nullable="false" />
+          <Property Name="FailedAttempts" Type="int" Nullable="false" />
+          <Property Name="DefaultCurrencyID" Type="int" />
+          <Property Name="OriginalCountryID" Type="int" />
+          <Property Name="LastLoginCountryID" Type="int" />
+          <Property Name="LastFailedCountryID" Type="int" />
+          <Property Name="AuthUserID" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Categories_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Categories" Type="Self.Categories" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Categories">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ccMVCTestingModelStoreContainer">
+          <EntitySet Name="Categories" EntityType="Self.Categories" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Categories_Users" Association="Self.FK_Categories_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Categories" EntitySet="Categories" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ccMVCTesting.Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="CategoryID" />
+          </Key>
+          <Property Name="CategoryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CategoryName" Type="String" MaxLength="64" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ParentCategoryID" Type="Int32" />
+          <Property Name="CategoryColor" Type="Int32" Nullable="false" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="ParentCategoryName" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="User" Relationship="Self.FK_Categories_Users" FromRole="Categories" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OriginalEMail" Type="String" MaxLength="384" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CurrentEMail" Type="String" MaxLength="384" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Created" Type="DateTimeOffset" Nullable="false" Precision="7" />
+          <Property Name="Confirmed" Type="DateTimeOffset" Precision="7" />
+          <Property Name="LastUpdated" Type="DateTimeOffset" Nullable="false" Precision="7" />
+          <Property Name="LastLogin" Type="DateTimeOffset" Precision="7" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <Property Name="OriginalPwd" Type="String" MaxLength="1024" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CurrentPwd" Type="String" MaxLength="1024" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FailedAttempts" Type="Int32" Nullable="false" />
+          <Property Name="DefaultCurrencyID" Type="Int32" />
+          <Property Name="OriginalCountryID" Type="Int32" />
+          <Property Name="LastLoginCountryID" Type="Int32" />
+          <Property Name="LastFailedCountryID" Type="Int32" />
+          <Property Name="AuthUserID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Categories" Relationship="Self.FK_Categories_Users" FromRole="Users" ToRole="Categories" />
+        </EntityType>
+        <Association Name="FK_Categories_Users">
+          <End Role="Users" Type="Self.User" Multiplicity="1" />
+          <End Role="Categories" Type="Self.Category" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Categories">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Categories" EntityType="Self.Category" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <AssociationSet Name="FK_Categories_Users" Association="Self.FK_Categories_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Categories" EntitySet="Categories" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ccMVCTestingModelStoreContainer" CdmEntityContainer="Entities">
+          <EntitySetMapping Name="Categories">
+            <EntityTypeMapping TypeName="ccMVCTesting.Model.Category">
+              <MappingFragment StoreEntitySet="Categories">
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+                <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+                <ScalarProperty Name="ParentCategoryID" ColumnName="ParentCategoryID" />
+                <ScalarProperty Name="CategoryColor" ColumnName="CategoryColor" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="ParentCategoryName" ColumnName="ParentCategoryName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="ccMVCTesting.Model.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="OriginalEMail" ColumnName="OriginalEMail" />
+                <ScalarProperty Name="CurrentEMail" ColumnName="CurrentEMail" />
+                <ScalarProperty Name="Created" ColumnName="Created" />
+                <ScalarProperty Name="Confirmed" ColumnName="Confirmed" />
+                <ScalarProperty Name="LastUpdated" ColumnName="LastUpdated" />
+                <ScalarProperty Name="LastLogin" ColumnName="LastLogin" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="OriginalPwd" ColumnName="OriginalPwd" />
+                <ScalarProperty Name="CurrentPwd" ColumnName="CurrentPwd" />
+                <ScalarProperty Name="FailedAttempts" ColumnName="FailedAttempts" />
+                <ScalarProperty Name="DefaultCurrencyID" ColumnName="DefaultCurrencyID" />
+                <ScalarProperty Name="OriginalCountryID" ColumnName="OriginalCountryID" />
+                <ScalarProperty Name="LastLoginCountryID" ColumnName="LastLoginCountryID" />
+                <ScalarProperty Name="LastFailedCountryID" ColumnName="LastFailedCountryID" />
+                <ScalarProperty Name="AuthUserID" ColumnName="AuthUserID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
